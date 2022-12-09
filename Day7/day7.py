@@ -61,3 +61,15 @@ for keys in total_sizes:
         part_1_answer += total_sizes[keys]
 
 print(part_1_answer)
+
+total_unused_space = 70000000 - total_sizes["/"]
+deletion_required = 30000000 - total_unused_space
+minimum_deletion = 0
+for keys in total_sizes:
+    if total_sizes[keys] >= deletion_required:
+        if minimum_deletion == 0:
+            minimum_deletion = total_sizes[keys]
+        elif total_sizes[keys] < minimum_deletion:
+            minimum_deletion = total_sizes[keys]
+part_2_answer = minimum_deletion
+print(part_2_answer)
